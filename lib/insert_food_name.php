@@ -5,7 +5,7 @@ class insert_food_name extends conectdb{
     parent::__construct();
 }
     public function insertFood(){
-            $stmt= $this->prepare("INSERT INTO `diet`.`foods`(`name`,`cup`,`tablespoon`,`teaspoon`,`userid`,`Calories`)VALUES(:name,:cup,:tablespoon,:teaspoon,:userid,:Calories)");
+            $stmt= $this->prepare("INSERT INTO `yosefbus_diet`.`foods`(`name`,`cup`,`tablespoon`,`teaspoon`,`userid`,`Calories`)VALUES(:name,:cup,:tablespoon,:teaspoon,:userid,:Calories)");
             $stmt->bindParam(':name', $_REQUEST['name']);
             $stmt->bindParam(':cup', $_REQUEST['cup']);
             $stmt->bindParam(':tablespoon',$_REQUEST['tablespoon'] );

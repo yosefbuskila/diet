@@ -5,7 +5,7 @@ class insert_eating extends conectdb{
     parent::__construct();
 }
     public function insertEat(){
-            $stmt= $this->prepare("insert into `diet`.`eat`(`foodid`,`timeeat`,`grams`,`userid`,`footage`) value( :foodid , :timeeat , :grams , :userid , :footage )");
+            $stmt= $this->prepare("insert into `yosefbus_diet`.`eat`(`foodid`,`timeeat`,`grams`,`userid`,`footage`) value( :foodid , :timeeat , :grams , :userid , :footage )");
             $stmt->bindParam(':foodid', $_REQUEST['foodid']);
             $stmt->bindParam(':timeeat', $_REQUEST['timeeat']);
             $stmt->bindParam(':grams',$_REQUEST['grams'] );
@@ -15,7 +15,7 @@ class insert_eating extends conectdb{
             return $stmt->execute();
         } 
         public function getFootage(){
-            $stmtFootage=$this->prepare('SELECT id FROM diet.footages where `footage`= :footage ');
+            $stmtFootage=$this->prepare('SELECT id FROM yosefbus_diet.footages where `footage`= :footage ');
             $stmtFootage->bindParam(':footage', $_REQUEST['footage']);
             $stmtFootage->execute();
             if($stmtFootage->rowCount()!=1)

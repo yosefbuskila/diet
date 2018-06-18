@@ -7,7 +7,7 @@ class conectuser extends conectdb{
     parent::__construct();
 }
     public function login($user_name,$password){
-        $stmt =$this->prepare("SELECT id FROM diet.users where email= :user_name and password= :password");
+        $stmt =$this->prepare("SELECT id FROM yosefbus_diet.users where email= :user_name and password= :password");
         $stmt->bindParam(':user_name', $user_name);
         $stmt->bindParam(':password', $password);
         $stmt->execute();
@@ -16,7 +16,7 @@ class conectuser extends conectdb{
             //echo $result[0][0];
         if($stmt->rowCount()==1){
             $token=$this->random_password(64);
-            $stmt= $this->prepare("INSERT INTO diet.log_in (`id`, `token`) VALUES ( :user_name , :token );");
+            $stmt= $this->prepare("INSERT INTO yosefbus_diet.log_in (`id`, `token`) VALUES ( :user_name , :token );");
             $stmt->bindParam(':user_name', $result[0][0]);
             $stmt->bindParam(':token', $token);
             $stmt->execute();
@@ -37,7 +37,7 @@ class conectuser extends conectdb{
         if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
-        $stmt =$this->prepare("SELECT id FROM diet.log_in where id = :id and token = :token and time > :time");
+        $stmt =$this->prepare("SELECT id FROM yosefbus_diet.log_in where id = :id and token = :token and time > :time");
         $stmt->bindParam(':id', $_SESSION["user_name"]);
         //echo $_SESSION["token"].'<br>';      
         $stmt->bindParam(':token', $_SESSION["token"]);

@@ -10,7 +10,7 @@ class eatinday extends conectdb {
         $stmt =$this->prepare("SELECT TIME_FORMAT(`eat`.`timeeat`, '%H:%i')  as 'timeeat' ,
   ROUND(case `footages`.`footage` when 'gram' then  `eat`.`grams` when 'cup' then `eat`.`grams`/`foods`.`cup`  when 'tablespoon' then `eat`.`grams`/`foods`.`tablespoon`  when 'teaspoon' then `eat`.`grams`/`foods`.`teaspoon`  end ,1) as amound
 , `foods`.`name` ,`foods`.`Calories` ,`footages`.`footage`, FORMAT(`eat`.`grams`*`foods`.`Calories`/100,0) as sum_cal 
-        FROM `diet`.`eat` INNER JOIN `diet`.`foods` on eat.foodid=foods.id INNER JOIN `diet`.`footages` on eat.footage=footages.id
+        FROM `yosefbus_diet`.`eat` INNER JOIN `yosefbus_diet`.`foods` on eat.foodid=foods.id INNER JOIN `yosefbus_diet`.`footages` on eat.footage=footages.id
         where `eat`.`userid`= :id and `eat`.`timeeat` between  :firstdat  and  :lastday  ");//"SELECT id FROM diet.users where email= :user_name and password= :password");
         $stmt->bindParam(':id', $_SESSION["user_name"]);
         $stmt->bindParam(':firstdat', $firstdat);

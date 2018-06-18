@@ -1,8 +1,8 @@
 <?php
 class getfoods {
     public function __construct() {
-        require_once 'lib\eatinday.php';
-        require_once 'lib\chack_user.php';
+        require_once 'lib/eatinday.php';
+        require_once 'lib/chack_user.php';
         if(!isset($_REQUEST['date']))
             exit ('missing parameter');
         $eatiniday=new eatinday();
